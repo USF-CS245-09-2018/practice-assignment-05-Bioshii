@@ -4,14 +4,6 @@ public class QuickSort implements SortingAlgorithm {
 		quicksort(arr, 0, arr.length-1);
 	}
 
-	public void quicksort2(int[] arr, int start, int end) {
-		if (start < end) {
-			//int pivot = partition(arr, start, end);
-			//quicksort(arr, start, pivot - 1);
-			//quicksort(arr, pivot + 1, end);
-		}
-	}
-
 	public void quicksort(int[] arr, int start, int end) {
 
 		if (end <= start || end < 0 || start < 0) {
@@ -23,18 +15,16 @@ public class QuickSort implements SortingAlgorithm {
 		int rightMark = end;
 
 		while(rightMark > leftMark - 1) {
-			while(arr[leftMark] < pivot) {
+			while(leftMark < end+1 && arr[leftMark] < pivot) {
 				leftMark++;
 			}
 
-			while(arr[rightMark] > pivot) {
+			while(rightMark >= start && arr[rightMark] > pivot) {
 				rightMark--;
 			}
 
 			if (rightMark != leftMark - 1) {
-				swap(arr, leftMark, rightMark);
-				leftMark++;
-				rightMark--;
+				swap(arr, leftMark++, rightMark--);
 			}
 		}
 
